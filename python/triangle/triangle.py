@@ -1,78 +1,19 @@
+def is_valid_triangle(f):
+    def inner(sides):
+        return sum(sides) > 2 * max(sides) and f(sides)
+    return inner
+
+
+@is_valid_triangle
 def equilateral(sides):
-    a = sides[0]
-    b = sides[1]
-    c = sides[2]
-
-    if a == 0 or b == 0 or c == 0:
-        return False
-
-    count = 0
-
-    if a == b:
-        count += 1
-    if b == c:
-        count += 1
-    if c == a:
-        count += 1
-
-    if count == 3:
-        return True
-    return False
+    return len(set(sides)) == 1
 
 
+@is_valid_triangle
 def isosceles(sides):
-    a = sides[0]
-    b = sides[1]
-    c = sides[2]
-
-    if a == 0 or b == 0 or c == 0:
-        return False
-
-    count = 0
-
-    if a == b:
-        count += 1
-    if b == c:
-        count += 1
-    if c == a:
-        count += 1
-
-    if count >= 1:
-        if (a + b) <= c:
-            return False
-        elif (b + c) <= a:
-            return False
-        elif (a + c) <= b:
-            return False
-        else:
-            return True
-    return False
+    return len(set(sides)) < 3
 
 
+@is_valid_triangle
 def scalene(sides):
-    a = sides[0]
-    b = sides[1]
-    c = sides[2]
-
-    if a == 0 or b == 0 or c == 0:
-        return False
-
-    count = 0
-
-    if a == b:
-        count += 1
-    if b == c:
-        count += 1
-    if c == a:
-        count += 1
-
-    if count == 0:
-        if (a + b) <= c:
-            return False
-        elif (b + c) <= a:
-            return False
-        elif (a + c) <= b:
-            return False
-        else:
-            return True
-    return False
+    return len(set(sides)) == 3

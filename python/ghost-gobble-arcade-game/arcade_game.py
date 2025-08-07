@@ -10,8 +10,7 @@ def eat_ghost(power_pellet_active, touching_ghost):
     """
     if power_pellet_active and touching_ghost:
         return True
-    else:
-        return False
+    return False
 
 
 def score(touching_power_pellet, touching_dot):
@@ -23,8 +22,7 @@ def score(touching_power_pellet, touching_dot):
     """
     if touching_power_pellet or touching_dot:
         return True
-    else:
-        return False
+    return False
 
 
 def lose(power_pellet_active, touching_ghost):
@@ -36,9 +34,7 @@ def lose(power_pellet_active, touching_ghost):
     """
     if not power_pellet_active and touching_ghost:
         return True
-    else:
-        return False
-
+    return False
 
 def win(has_eaten_all_dots, power_pellet_active, touching_ghost):
     """Trigger the victory event when all dots have been eaten.
@@ -53,5 +49,4 @@ def win(has_eaten_all_dots, power_pellet_active, touching_ghost):
 
     if has_eaten_all_dots and power_pellet_active and touching_ghost:
         return True
-    else:
-        return False
+    return False

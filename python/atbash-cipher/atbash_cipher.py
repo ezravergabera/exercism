@@ -1,23 +1,24 @@
-atbash = str.maketrans("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", "zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba")
+atbash = str.maketrans("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789", "zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba123456789")
 
 def encode(plain_text):
+    cipher = ""
+
     for chr in plain_text:
-        if not chr.isalpha():
-            cipher = plain_text.replace(chr, "")
+        if chr.isalnum():
+            cipher += chr
 
     cipher = cipher.translate(atbash)
 
-    return cipher.translate(atbash)
+    count = 0
 
+    for index, chr in enumerate(cipher):
+        if index % 5 == 0:
+            cipher = cipher[:index+count] + " " + cipher[index+count:]
+            count += 1
+
+    return cipher.strip()
 
 def decode(ciphered_text):
-    return ciphered_text.translate(atbash)
+    decoded_text = ciphered_text.replace(" ", "")
 
-
-print(encode("Testing,1 2 3, testing."))
-print(encode("x123 yes"))
-print(decode("vcvix rhn"))
-
-
-stringgg = "hello"
-
+    return decoded_text.translate(atbash).strip()

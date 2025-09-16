@@ -1,10 +1,12 @@
 def find_anagrams(word, candidates):
+    anagrams = []
+    target = list(word.upper())
+    target.sort()
     for candidate in candidates:
-        target = word
-        for letter in candidate:
-            if letter in target:
-                target
+        candidate_word = list(candidate.upper())
+        candidate_word.sort()
 
-stringgg = "hello"
+        if target == candidate_word and candidate.lower() != word.lower():
+            anagrams.append(candidate)
 
-stringgg.index()
+    return anagrams
